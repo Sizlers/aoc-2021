@@ -12,7 +12,6 @@ fs_1.default.readFile('./input.txt', 'utf8', (err, input) => {
     console.log(solutionOne(input));
     console.log(solutionTwo(input));
 });
-// Yes, I'm taking the piss. 
 const solutionOne = (input) => input.split(/\r?\n/).filter((line, i, array) => i !== 0 && parseInt(line) > parseInt(array[i - 1])).length;
 const solutionTwo = (input) => input.split(/\r?\n/).filter((line, i, array) => i !== 0 && parseInt(array[i + 1]) > parseInt(array[i - 2])).length;
 //# sourceMappingURL=index.js.map
