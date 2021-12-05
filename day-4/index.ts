@@ -5,7 +5,6 @@ const input : string[] = fs.readFileSync('./input.txt','utf8').split(/\r?\n/);
 const numbers = input[0];
 const boardData = input.filter((line, i) => i !== 0 && line !== '').map(line => line.replace(/  +/g, ' ').trim());
 
-
 const numbersOnBoards : boardItem[] = boardData.map((line, i) => (
   line.split(' ').map((number, j) => ({
     row: j + 1,
