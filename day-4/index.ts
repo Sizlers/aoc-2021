@@ -1,5 +1,5 @@
 import fs from "fs";
-import { boardItem } from "./types";
+import { boardItem, boardSum, hits } from "./types";
 
 const input : string[] = fs.readFileSync('./input.txt','utf8').split(/\r?\n/);
 const numbers = input[0];
@@ -16,14 +16,14 @@ const numbersOnBoards : boardItem[] = boardData.map((line, i) => (
 )).flat();
 
 const boardArray : number[] = Array(numbersOnBoards[numbersOnBoards.length - 1].board).fill(0).map((_, i) => i + 1);
-const boardsSum : {board: number, sum: number}[] = boardArray.map((board) => ({
+const boardsSum : boardSum[] = boardArray.map((board) => ({
     board: board,
     sum: numbersOnBoards.filter(number => number.board === board).map(number => number.number).reduce((partialSum, number) => partialSum + number)
 }));
 
 let solutionOne = null;
 let solutionTwo = null;
-const hits : {id: string, score: number}[]= [];
+const hits : hits[]= [];
 let remainingBoards = boardArray;
 
 const answersLogic = (index : number, match : boardItem, id: string, unmarkedBoardSum : number) => {
